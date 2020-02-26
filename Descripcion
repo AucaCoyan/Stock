@@ -1,0 +1,10 @@
+Programa de stock
+
+The idea es to work in a program about stock. (like Atenko)
+Firstly it is going to have a module to manage products (Add, Rename, Remove, etc)
+
+Later on, things like broken items or re categorization will be processed
+
+Conditions:
+To use classes
+To have different files
