@@ -1,3 +1,8 @@
+'''
+Dudas:
+A- Como hago para que no este todo en el mismo txt? se puede atomizar cada parte?
+B- Donde coloco las funciones?
+'''
 
 # -------------------------------------------------------------------------------
 #                                      SECTION
@@ -13,6 +18,11 @@ class Object:
         self.name = name
         self.Deposit = []
         self.Deposit.append(Available)
+
+# -------------------Functions-------------------
+
+def addProduct(productName):
+
 
 
 # -------------------------------------------------------------------------------
