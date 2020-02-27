@@ -1,8 +1,8 @@
-'''
+"""
 Dudas:
-A- Como hago para que no este todo en el mismo txt? se puede atomizar cada parte?
-B- Donde coloco las funciones?
-'''
+A-
+todo Make a general concept of the program. Limits and finish lines. From that on keep programming
+"""
 
 # -------------------------------------------------------------------------------
 #                                      SECTION
@@ -10,6 +10,8 @@ B- Donde coloco las funciones?
 
 # -------------------SUBSECTION-------------------
 
+# -------------------Libraries & files-------------------
+# todo: load different files
 
 # -------------------Classes-------------------
 
@@ -78,5 +80,5 @@ while True:
     #     calculartransaccion(int(input("Ingrese el CODIGO de la transaccion a calcular: ")))
     # if userinput == "13":
     #     calculardeudacliente(int(input("Ingrese el CODIGO del cliente a calcular su deuda: ")))
-    if ingresousuario == "n" or ingresousuario =="N":
+    if userinput == "n" or userinput =="N":
         break
