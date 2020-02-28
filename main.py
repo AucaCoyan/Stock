@@ -19,13 +19,21 @@ class Object:
     def __init__(self, name):
         self.name = name
         self.Deposit = []
-        self.Deposit.append(Available)
+        self.Deposit.append(Available) # acá tengo varias alternativas: para hacer un producto roto, puedo poner un
+                                       #     boolean Broken/Works, pero no sé si me los lista
+
+# subclass: tool
+
+class Worker:
+
+class Receipt:
+
+class Supplier:
 
 # -------------------Functions-------------------
 
 def addProduct(productName):
-
-
+    productName = input(productName)
 
 # -------------------------------------------------------------------------------
 #                            Star of the program
@@ -55,7 +63,7 @@ while True:
                            "\n"
                            "Opcion a elegir: ")
     if userinput == "1":
-        crearcliente()
+        addProduct()
     # if userinput == "2":
     #     crearproducto()
     # if userinput == "3":

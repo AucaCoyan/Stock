@@ -1,9 +1,18 @@
 Stock management software
 
-The idea es to work in a program about stock. (like Atenko)
-Firstly it is going to have a module to manage products (Add, Rename, Remove, etc)
+The idea es to work in a program about stock. (It is specially specified for companies like SACDE)
+Firstly it is going to have
+-Visual or web application
+-a module to manage products (Add, Rename, Remove, etc) With description box
+-include receipts, with supplier, specification, and placing in the site (if available)
+-loan tools to workers, to know who you lend what (of which sector and who is his/her superior)
+-Table of suppliers, and data of contact
+-a module to print receipts in PDF files, either for suppliers or for lendings
 
-Later on, things like broken items or re categorization will be processed
+
+Later on, things like
+
+-broken items or re categorization will be processed
 
 Conditions:
 To use classes
