@@ -13,7 +13,9 @@ todo Make a general concept of the program. Limits and finish lines. From that o
 # -------------------Libraries & files-------------------
 # todo: load different files
 
+
 # -------------------Classes-------------------
+
 
 class Object:
     def __init__(self, name):
@@ -24,16 +26,25 @@ class Object:
 
 # subclass: tool
 
+
 class Worker:
+    pass
+
 
 class Receipt:
+    pass
+
 
 class Supplier:
+    pass
 
 # -------------------Functions-------------------
 
-def addProduct(productName):
-    productName = input(productName)
+
+def addproduct():
+    productname = input(productname)
+    pass1
+
 
 # -------------------------------------------------------------------------------
 #                            Star of the program
@@ -63,7 +74,7 @@ while True:
                            "\n"
                            "Opcion a elegir: ")
     if userinput == "1":
-        addProduct()
+        addproduct()
     # if userinput == "2":
     #     crearproducto()
     # if userinput == "3":
@@ -88,5 +99,5 @@ while True:
     #     calculartransaccion(int(input("Ingrese el CODIGO de la transaccion a calcular: ")))
     # if userinput == "13":
     #     calculardeudacliente(int(input("Ingrese el CODIGO del cliente a calcular su deuda: ")))
-    if userinput == "n" or userinput =="N":
+    if userinput == "n" or userinput == "N":
         break
