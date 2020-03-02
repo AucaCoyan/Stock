@@ -1,7 +1,6 @@
 """
 Dudas:
-A-
-todo Make a general concept of the program. Limits and finish lines. From that on keep programming
+A-Visual web or application
 """
 
 # -------------------------------------------------------------------------------
@@ -13,21 +12,35 @@ todo Make a general concept of the program. Limits and finish lines. From that o
 # -------------------Libraries & files-------------------
 # todo: load different files
 
-
 # -------------------Classes-------------------
+# import ui.py
 
 
 class Object:
-    def __init__(self, name):
-        self.name = name
-        self.Deposit = []
-        self.Deposit.append(Available) # acá tengo varias alternativas: para hacer un producto roto, puedo poner un
-                                       #     boolean Broken/Works, pero no sé si me los lista
+    def __init__(self, stock):
+        self.stock = 0
+    pass
 
-# subclass: tool
+# Hardcoded Objects todo: load objects from an existent .csv
+
+
+pencil = Object(10)
+print(pencil.stock)
+
+pencil.stock = 10
+
+print(pencil.stock)
+
+
+'''
+class Tool(Object):
+    pass
 
 
 class Worker:
+    def __init__(self, name, sector,):
+        self.name = name
+        self.sector = none
     pass
 
 
@@ -38,12 +51,15 @@ class Receipt:
 class Supplier:
     pass
 
+'''
+
 # -------------------Functions-------------------
 
-
-def addproduct():
-    productname = input(productname)
-    pass1
+def addProduct():
+    print("A new product will be created")
+    productname = input("Name of the new product: ")
+    print(productname, " was created")
+    pass
 
 
 # -------------------------------------------------------------------------------
@@ -53,28 +69,17 @@ def addproduct():
 print("Welcome to the stock management software. \n")
 while True:
     userinput = input("--------------------------------------\n"
-                           "START. \n "
-                           "\n"
-                           "Choose an option: \n "
-                           "1-Crear cliente \n "
-                           "2-Crear producto \n"
-                           "3- \n"
-                           "4- \n"
-                           "5- \n"
-                           "6- \n"
-                           "7- \n"
-                           "8- \n"
-                           "9- \n"
-                           "10- \n"
-                           "11- \n"
-                           "12- \n"
-                           "13-"
-                           "\n"
-                           "Para finalizar, presione N\n"
-                           "\n"
-                           "Opcion a elegir: ")
+                      "START. \n "
+                      "\n"
+                      "Choose an option: \n "
+                      "1-Add Product \n "
+                      "2-Crear producto \n"
+                      "3- \n"
+                      "Para finalizar, presione N\n"
+                      "\n"
+                      "Opcion a elegir: ")
     if userinput == "1":
-        addproduct()
+        addProduct()
     # if userinput == "2":
     #     crearproducto()
     # if userinput == "3":
