@@ -1,18 +1,43 @@
 """
 Questions:
-A-Visual web or application
-
-to do:
-ui.py
 load different files
-load objects from an existent .csv
-
+split classes
+load objects from an existent .csv / sqlite3
+files about 300 lines long
 """
 
 
 # -------------------------------------------------------------------------------
 #                                      SECTION
 # -------------------------------------------------------------------------------
+
+import sqlite3
+# create the database
+conn = sqlite3.connect('database.db')
+# create the cursor
+c = conn.cursor()
+
+# create the tables / Suspended because they are already created
+# Should put this on a different file and check if the tables exist, and make them otherwise
+#
+# c.execute("""CREATE TABLE workers (
+#             firstName text,
+#             lastName text,
+#             sector text,
+#             boss text
+#             )
+#             """)
+
+c.execute("DROP TABLE products")
+
+c.execute("""CREATE TABLE products (
+            productName text,
+            productQuantity int
+            )
+            """)
+
+conn.commit()
+
 
 # -------------------SUBSECTION-------------------
 
@@ -65,22 +90,25 @@ def add_product():
     print('A new product will be created')
     product_name = input('Name of the new product: ')
     product_quantity = int(input('Enter the initial quantity of the new product: '))
-    print(type(product_quantity))
-    product_name.Object = product_quantity + 1
-    print(product_name, ' was created. With ', product_quantity, ' items.')
+    c.execute("INSERT INTO product VALUES (?, ?)", (product_name, product_quantity))
+    conn.commit()
+    print(product_name, ' was created with ', product_quantity, ' items.')
     pass
+
 
 
 # .......................LOOKUPS...........................
 
 
 def product_lookup(product):
-    if try_product(product) is False:
-        raise
+    # if hasattr(product, "Object") is False:
+    #     raise
     #   pass
-    else:
-        product = Object()
-        print("The Product is %s \n " % product.stock)
+    # else:
+    lookup = c.execute("SELECT * FROM products WHERE productName=?", (product))
+    conn.commit()
+    print(lookup)
+
     pass
 
 
@@ -141,3 +169,7 @@ while True:
     #     calculardeudacliente(int(input("Ingrese el CODIGO del cliente a calcular su deuda: ")))
     if user_input == "n" or user_input == "N":
         break
+
+
+
+conn.close()
