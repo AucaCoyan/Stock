@@ -6,14 +6,23 @@ load objects from an existent .csv / sqlite3
 files about 300 lines long
 """
 
-
 # -------------------------------------------------------------------------------
 #                                      SECTION
 # -------------------------------------------------------------------------------
 
-import sqlite3
+import mysql.connector
+
 # create the database
-conn = sqlite3.connect('database.db')
+# conn = sqlite3.connect(":memory:")
+
+# connect to the database
+conn = mysql.connector.connect(
+    user='root',
+    password='root',
+    host='localhost',
+    database='stock'
+)
+
 # create the cursor
 c = conn.cursor()
 
@@ -21,20 +30,20 @@ c = conn.cursor()
 # Should put this on a different file and check if the tables exist, and make them otherwise
 #
 # c.execute("""CREATE TABLE workers (
-#             firstName text,
-#             lastName text,
+#             name text,
 #             sector text,
 #             boss text
 #             )
 #             """)
+#
+# c.execute("DROP TABLE products")
 
-c.execute("DROP TABLE products")
-
-c.execute("""CREATE TABLE products (
-            productName text,
-            productQuantity int
-            )
-            """)
+# c.execute("""CREATE TABLE products (
+#             name text,
+#             quantity int,
+#             id int AUTO_INCREMENT PRIMARY KEY
+#             )
+#             """)
 
 conn.commit()
 
@@ -47,54 +56,47 @@ conn.commit()
 # import ui.py
 
 
-class Object:
-    def __init__(self):  # When Object is created between () says the quantity
-        self.stock = input("Insert the initial quantity:")  # quantity assignation
+class Product:
+    def __init__(self, stock):  # When Object is created between () says the quantity
+        self.stock = stock  # input("Insert the initial quantity:")  # quantity assignation
 
     pass
 
 
-# Hardcoded Objects
+class Document:
+    pass
 
-'''
-pencil = Object()
-print(pencil.stock)
-
-pencil.stock = 10
-
-print(pencil.stock)
-'''
 
 class Worker:
-    def __init__(self, ):
-        self.name = input("Insert the name of the worker:")
-        self.sector = input("Insert the sector of the worker:")
+    def __init__(self, name, sector):
+        self.name = name
+        self.sector = sector
+        # self.name = input("Insert the name of the worker:")
+        # self.sector = input("Insert the sector of the worker:")
+
     pass
 
 
-'''
-
-class Receipt:
+class Receipt(Document):
     pass
 
-class Supplier:
+
+class Lending(Document):
     pass
-
-'''
-
 
 # -------------------Functions-------------------
 
 
 def add_product():
     print('A new product will be created')
-    product_name = input('Name of the new product: ')
-    product_quantity = int(input('Enter the initial quantity of the new product: '))
-    c.execute("INSERT INTO product VALUES (?, ?)", (product_name, product_quantity))
+    name = input('Name of the new product: ')
+    quantity = int(input('Enter the initial quantity of the new product: '))
+    #                                                                        todo: try not integer
+    c.execute("SELECT MAX(id) FROM products")       # search for the last id in the table products
+    id = int((c.fetchall()[0])[0]) + 1              # sums 1 and assign it to id variable
+    c.execute("INSERT INTO products VALUES (%s, %s, %s)", (name, quantity, id))
     conn.commit()
-    print(product_name, ' was created with ', product_quantity, ' items.')
-    pass
-
+    print(name, ' was created with ', quantity, ' items.')
 
 
 # .......................LOOKUPS...........................
@@ -105,9 +107,9 @@ def product_lookup(product):
     #     raise
     #   pass
     # else:
-    lookup = c.execute("SELECT * FROM products WHERE productName=?", (product))
+    lookup = c.execute("SELECT * FROM products WHERE name=%s", (product,))
     conn.commit()
-    print(lookup)
+    print(c.fetchall(lookup)[0])
 
     pass
 
@@ -169,7 +171,5 @@ while True:
     #     calculardeudacliente(int(input("Ingrese el CODIGO del cliente a calcular su deuda: ")))
     if user_input == "n" or user_input == "N":
         break
-
-
 
 conn.close()
