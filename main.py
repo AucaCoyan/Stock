@@ -16,7 +16,7 @@ files about 300 lines long
 
 import document
 import product
-import sql
+import sqlite3
 
 # import ui.py
 
@@ -25,9 +25,6 @@ from product import Product
 
 receipt_1: object = document.Receipt()
 print(receipt_1)
-
-
-
 
 
 # -------------------Classes-------------------
