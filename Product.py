@@ -13,12 +13,17 @@ def add_product():
     quantity = int(input('Enter the initial quantity of the new product: '))
     #                                                                        todo: try not integer
     c.execute("SELECT MAX(id) FROM products")  # search for the last id in the table products
-    id = int((c.fetchall()[0])[0]) + 1  # sums 1 and assign it to id variable
+    id = c.fetchall()
+    print(id)
+    print(id[0][0])
+    id = id[0][0] + 1  # sums 1 and assign it to id variable
+    print(id)
+    # id = int(c.fetchall()[0][0]) + 1  # sums 1 and assign it to id variable
     #                                                                        todo: before creating, check if it's exist
     if product_lookup(name) is not None:
         print("The product already exists")
     else:
-        c.execute("INSERT INTO products VALUES (%s, %s, %s)", (name, quantity, id))
+        c.execute("INSERT INTO products VALUES (?, ?, ?)", (name, quantity, id))
         conn.commit()
         print(name, ' was created with ', quantity, ' items.')
 
@@ -29,9 +34,9 @@ def product_lookup(product):
     if try_product(product) is None:
         return
     else:
-        c.execute("SELECT * FROM products WHERE name=%s", (product,))
+        c.execute("SELECT * FROM products WHERE name=?", (product, ))
     conn.commit()
-    index = c.fetchone()  # saves the tuple result on index
+    index = c.fetchall()  # saves the tuple result on index
     # print(index)
     print("The product is %s, quantity: %s, product id: %s" % (index[0][0], index[0][1], index[0][2]))
     return None
@@ -41,7 +46,7 @@ def del_product(product):
     if try_product(product) is None:
         return
     else:
-        c.execute("DELETE FROM products WHERE name=%s", (product,))
+        c.execute("DELETE FROM products WHERE name=?", (product, ))
         print("Product deleted")
 
 
@@ -50,10 +55,10 @@ def del_product(product):
 def try_product(product):
     '''
     Finds a products,
-    :param product:
+    :param product: str
     :return: Returns the id of a product if it's found, else returns None
     '''
-    c.execute("SELECT * FROM products WHERE name=%s", (product,))
+    c.execute("SELECT * FROM products WHERE name=?", (product, ))
     conn.commit()
     index = c.fetchone()  # saves the tuple result on index
     if index is not None:

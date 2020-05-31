@@ -1,0 +1,19 @@
+Stock management software
+
+The idea is to work in a program about stock. (It is specially designed for companies like SACDE)
+Features list:
+todo -products (Add, lookup, Edit, Remove) With description box
+todo -receipts(Add, lookup, Remove)
+todo -receipt consists of: number, date, item(s) & quantity, worker, sector
+todo -receipts edits stocks numbers
+todo -suppliers(Add, lookup, Edit, Remove)
+todo -suppliers consists of Name, Address, email, phone, description
+todo -Workers(Add, lookup, Edit, Remove)
+todo -workers consists of Name, ID, his/her superior
+todo -tables of items loan, workers with items,
+todo -Table of suppliers, and data of contact
+todo -a module to print receipts in PDF files, for lending
+todo -a Visual application
+
+
+

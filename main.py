@@ -59,6 +59,8 @@ while True:
                        "Choose an option: \n "
                        "1-Add Product \n "
                        "2-Look up for a product  \n"
+                       "3-Create receipt \n"
+                       "4-Look up for a receipt \n"
                        "7-Delete a product  \n"
                        "  \n"
                        "To exit, press N\n"
@@ -68,10 +70,10 @@ while True:
         product.add_product()
     if user_input == "2":
         product.product_lookup(input("Enter the name of the product to look up: "))
-    # if user_input == "3":
-    #     creartransaccion()
-    # if user_input == "4":
-    #     consultarcliente(int(input("Ingrese el CODIGO del cliente a buscar: ")))
+    if user_input == "3":
+        document.create_receipt()
+    if user_input == "4":
+        document.receipt_lookup(int(input("Enter the number of the receipt to look up: ")))
     # if user_input == "5":
     #     buscarcliente(input("Ingrese nombre/apellido/CUIT del cliente a buscar: "))
     # if user_input == "6":
@@ -93,4 +95,4 @@ while True:
     if user_input == "n" or user_input == "N":
         break
 
-conn.close()
+# conn.close()
