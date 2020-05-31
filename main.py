@@ -16,7 +16,6 @@ files about 300 lines long
 
 import document
 import product
-import sqlite3
 
 # import ui.py
 
