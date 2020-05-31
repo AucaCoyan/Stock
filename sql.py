@@ -1,15 +1,7 @@
-import mysql.connector
+import sql.connector
 # -------------------DATABASE-------------------
 # create the database
-# conn = sqlite3.connect(":memory:")
-
-# connect to the database
-conn = mysql.connector.connect(
-    user='root',
-    password='root',
-    host='localhost',
-    database='stock'
-)
+conn = sqlite3.connect(":memory:")
 
 # create the cursor
 c = conn.cursor(buffered=True)
