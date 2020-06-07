@@ -1,5 +1,6 @@
 from sql import c
 from sql import conn
+import reportlab
 
 
 class Product:
@@ -10,7 +11,7 @@ class Product:
 def add_product():
     print('A new product will be created')
     name = input('Name of the new product: ')
-    quantity = int(input('Enter the initial quantity of the new product: '))
+    stockProduct = int(input('Enter the initial quantity of the new product: '))
     #                                                                        todo: try not integer
     c.execute("SELECT MAX(id) FROM products")  # search for the last id in the table products
     id = c.fetchall()
@@ -23,23 +24,27 @@ def add_product():
     if product_lookup(name) is not None:
         print("The product already exists")
     else:
-        c.execute("INSERT INTO products VALUES (?, ?, ?)", (name, quantity, id))
+        c.execute("INSERT INTO products VALUES (?, ?, ?)", (name, stockProduct, id))
         conn.commit()
-        print(name, ' was created with ', quantity, ' items.')
+        print(name, ' was created with ', stockProduct, ' items.')
 
 
 # .......................LOOKUPS...........................
 
 def product_lookup(product):
     if try_product(product) is None:
-        return
+        return  # print("The product doesn't exists")
     else:
-        c.execute("SELECT * FROM products WHERE name=?", (product, ))
+        c.execute("SELECT * FROM products WHERE nameProduct=?", (product, ))
     conn.commit()
     index = c.fetchall()  # saves the tuple result on index
-    # print(index)
-    print("The product is %s, quantity: %s, product id: %s" % (index[0][0], index[0][1], index[0][2]))
-    return None
+    try:
+        index[1]
+    except IndexError:
+        # print(index[1])
+        print("There is more than one product")
+    else: # not working
+        print("The product is %s, quantity: %s, product id: %s" % (index[0][0], index[0][1], index[0][2]))
 
 
 def del_product(product):
@@ -58,7 +63,7 @@ def try_product(product):
     :param product: str
     :return: Returns the id of a product if it's found, else returns None
     '''
-    c.execute("SELECT * FROM products WHERE name=?", (product, ))
+    c.execute("SELECT * FROM products WHERE nameProduct=?", (product, ))
     conn.commit()
     index = c.fetchone()  # saves the tuple result on index
     if index is not None:
@@ -69,3 +74,13 @@ def try_product(product):
         # print("index IS None")
         print("Couldn't find the product.")
         return None
+
+
+def list_products():
+    c.execute("SELECT * FROM products")
+    conn.commit()
+    ptable = c.fetchall()
+    print(ptable)
+
+def printpdf(filename, ):
+    filename = filename

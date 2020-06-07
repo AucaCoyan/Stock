@@ -10,22 +10,39 @@ c = conn.cursor()
 # create the tables
 
 c.execute("""CREATE TABLE workers (
-            name text,
-            sector text,
+            nameWorker text,
+            sectorWorker text,
             boss text
             )
             """)
 
 c.execute("""CREATE TABLE products (
-            name text,
-            quantity int,
-            id int 
+            nameProduct text,
+            stockProduct int,
+            idProduct int 
+            )
+            """)
+
+c.execute("""CREATE TABLE receipt (
+            isEntry bol,
+            worker str,
+            sector str,
+            idReceipt int,
+            date timestamp
+            )
+            """)
+
+c.execute("""CREATE TABLE itemsInReceipt(
+            idReceipt int,
+            idProduct int,
+            nameProduct str, 
+            quantityProduct int
             )
             """)
 
 first_product = ["Hammer", 5, 1]
 
-print(first_product[2])
+
 c.execute("INSERT INTO products VALUES (:name, :quantity, :id)",
           {'name': first_product[0],
            'quantity': first_product[1],

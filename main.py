@@ -18,16 +18,14 @@ import document
 import product
 import sql
 
+print(sql.first_product[2])
+
 # import ui.py
 
 # check if Document module is working
-from product import Product
 
-receipt_1: object = document.Receipt()
-print(receipt_1)
-
-
-
+# receipt_1: object = document.Receipt()
+# print(receipt_1)
 
 
 # -------------------Classes-------------------
@@ -61,6 +59,7 @@ while True:
                        "2-Look up for a product  \n"
                        "3-Create receipt \n"
                        "4-Look up for a receipt \n"
+                       "5-List Products \n"
                        "7-Delete a product  \n"
                        "  \n"
                        "To exit, press N\n"
@@ -74,8 +73,8 @@ while True:
         document.create_receipt()
     if user_input == "4":
         document.receipt_lookup(int(input("Enter the number of the receipt to look up: ")))
-    # if user_input == "5":
-    #     buscarcliente(input("Ingrese nombre/apellido/CUIT del cliente a buscar: "))
+    if user_input == "5":
+        product.list_products()
     # if user_input == "6":
     #     borrarclientes(int(input("Ingrese el CODIGO del cliente a borrar: ")))
     if user_input == "7":
