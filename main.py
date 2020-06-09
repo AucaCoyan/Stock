@@ -1,7 +1,5 @@
 """
 Questions:
-load different files
-split classes
 load objects from an existent .csv / sqlite3
 files about 300 lines long
 """
@@ -35,9 +33,6 @@ class Worker:
     def __init__(self, name, sector):
         self.name = name
         self.sector = sector
-        # self.name = input("Insert the name of the worker:")
-        # self.sector = input("Insert the sector of the worker:")
-
     pass
 
 
