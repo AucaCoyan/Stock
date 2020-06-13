@@ -11,41 +11,44 @@ class Product:
 def add_product():
     print('A new product will be created')
     nameProduct = input('Name of the new product: ')
-    stockProduct = int(input('Enter the initial quantity of the new product: '))
-    #                                                                        todo: try not integer
+    while True:
+        stockProduct = input('Enter the initial quantity of the new product: ')
+        if stockProduct.isdigit():
+            break
+        else:
+            print("Please insert a number.")
+            continue
+    stockProduct = int(stockProduct)
     c.execute("SELECT MAX(idProduct) FROM products")  # search for the last id in the table products
     id = c.fetchall()
     id = id[0][0] + 1  # sums 1 and assign it to id variable
-    print(id)
-    # id = int(c.fetchall()[0][0]) + 1  # sums 1 and assign it to id variable
-    #                                                                        todo: before creating, check if it's exist
-    if product_lookup(nameProduct) is not None:
+    if product_lookup(nameProduct) != None:
         print("The product already exists")
     else:
         c.execute("INSERT INTO products VALUES (?, ?, ?)", (nameProduct, stockProduct, id))
         conn.commit()
-        print(nameProduct, ' was created with ', stockProduct, ' items.')
+        print(nameProduct, 'was created with ', stockProduct, ' items.')
 
 
 def product_lookup(nameProduct):
     """
     Finds a product,
     :param nameProduct: str
-    :return: Returns the id of a product if it's found, else returns None
+    :return: Returns the info of the product if it's found, a statement if it found duplicates, or else returns None
     """
+    print("Searching", nameProduct, "in database.")
     c.execute("SELECT * FROM products WHERE nameProduct=?", (nameProduct,))
-    conn.commit()
     index = c.fetchall()  # saves the tuple result on index
-    print(index)
-    if index is None:
-        print("product not found.")
-        return  # print("The product doesn't exists")
-    elif len(index) != 1:  # ask if there is more than one product with the same name
-        print("There is more than one product")
-        list_products()  # lists the products (actually not clear to the user)
-        return
+    if index == []:
+        print(nameProduct, "product couldn't be found.")
+        return None
+    elif len(index) > 1:    # ask if there is more than one product with the same name
+        print("There is more than one product named", nameProduct)
+        print(index)        # lists the products equally named nameProduct
+        return len(index)   # returns the number of products with the same name (diffenent than return None)
     else:
         print("The product is %s, quantity: %s, product id: %s" % (index[0][0], index[0][1], index[0][2]))
+        return 1            # the number of the products created
 
 
 def del_product(nameProduct):

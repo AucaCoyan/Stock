@@ -1,6 +1,5 @@
 """
 Questions:
-load objects from an existent .csv / sqlite3
 files about 300 lines long
 """
 
@@ -47,15 +46,16 @@ class Worker:
 print('Welcome to the stock management software. \n')
 while True:
     user_input = input("--------------------------------------\n"
-                       "START. \n "
                        "\n"
                        "Choose an option: \n "
-                       "1-Add Product \n "
+                       "1-Add product \n "
                        "2-Look up for a product  \n"
-                       "3-Create receipt \n"
-                       "4-Look up for a receipt \n"
-                       "5-List Products \n"
-                       "7-Delete a product  \n"
+                       "3-Delete a product \n"
+                       "4-Create receipt \n"
+                       "5-Look up for a receipt \n"
+                       "6-Delete a reciept \n"
+                       "7-List products  \n"
+                       "8-List recipts  \n"
                        "  \n"
                        "To exit, press N\n"
                        "\n"
@@ -65,17 +65,17 @@ while True:
     if user_input == "2":
         product.product_lookup(input("Enter the name of the product to look up: "))
     if user_input == "3":
-        document.create_receipt()
-    if user_input == "4":
-        document.receipt_lookup(int(input("Enter the number of the receipt to look up: ")))
-    if user_input == "5":
-        product.list_products()
-    # if user_input == "6":
-    #     borrarclientes(int(input("Ingrese el CODIGO del cliente a borrar: ")))
-    if user_input == "7":
         product.del_product(str(input("Enter the product name to delete: ")))
-    # if user_input == "8":
-    #     borrartransaccion(int(input("Ingrese el CODIGO de la transaccion a borrar: ")))
+    if user_input == "4":
+        document.add_receipt()
+    if user_input == "5":
+        document.receipt_lookup(int(input("Enter the number of the receipt to look up: ")))
+    if user_input == "6":
+        document.del_receipt()
+    if user_input == "7":
+        product.list_products()
+    if user_input == "8":
+        document.list_receipts()
     # if user_input == "9":
     #     consultartransaccion(int(input("Ingrese el CODIGO de la transaccion a buscar: ")))
     # if user_input == "10":

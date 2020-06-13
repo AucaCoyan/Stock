@@ -10,18 +10,8 @@ class Lending(Document):
     pass
 
 
-def create_receipt():
+def add_receipt():
     print("not implemented yet")
-
-
-def try_receipt(receipt):
-    '''
-    Returns the receipt
-    :param receipt:
-    :return:
-    '''
-    print("not implemented yet" + receipt)
-    pass
 
 
 def receipt_lookup(receipt):
@@ -30,6 +20,14 @@ def receipt_lookup(receipt):
     :return: details of the reciept
     """
     print("not implemented yet" + receipt)
+    pass
+
+
+def del_receipt():
+    pass
+
+
+def list_receipts():
     pass
 
 
