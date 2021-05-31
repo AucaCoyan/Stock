@@ -15,7 +15,6 @@ import document
 import product
 import sql
 
-print(sql.first_product[2])
 
 # import ui.py
 
