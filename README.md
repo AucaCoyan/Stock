@@ -5,15 +5,13 @@ The idea is to work in a program about stock.
 ## Features list:
 
 * products (Add, lookup, Edit, Remove) With description box
+    * inventory table, with available and rented quantities
+* clients(Add, lookup, Edit, Remove)
+    * clients consists of Name, Address, email, phone, description
 * receipts(Add, lookup, Remove)
-    * receipt consists of: number, date, item(s) & quantity, worker, sector
+    * receipt consists of: number, date, item(s) & quantity, data of the client
     * receipts edits stocks numbers
-* suppliers(Add, lookup, Edit, Remove)
-    * suppliers consists of Name, Address, email, phone, description
-    * Table of suppliers, and data of contact
-* Workers(Add, lookup, Edit, Remove)
-    * workers consists of Name, ID, his/her superior
-* tables of items loan, workers with items,
+* billing, buy supplies, etc.
 
 ## Later implementation:
 
